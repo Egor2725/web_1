@@ -1,0 +1,34 @@
+<!--     базовый html, ссылки на остальные страницы. тут позже выводиться приветствие авторизированного пользователя и предложение войти       -->
+{% extends 'bootstrap/base.html' %}
+
+{% block title %}
+    {% if title %}{{ title }} - Microblog{% else %}Welcome{% endif %}
+{% endblock %}
+
+{%block navbar%}
+
+    <div>
+    <a href="/">Главная</a>
+    <a href="/course">Курсы валют</a>
+    <a href="/weather/Минск">Погода</a>
+    <a href="/login">Войти</a>
+    </div>
+{% endblock %}
+
+{% block content %}
+    <hr>
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+    <ul>
+            {% for message in messages %}
+            <li>{{ message }}</li>
+            {% endfor %}
+    </ul>
+    {% endif %}
+    {% endwith %}
+
+    
+    {% block app_content %} {% endblock %}
+    
+
+    {% endblock %}

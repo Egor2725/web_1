@@ -1,0 +1,38 @@
+{% extends "base.html" %}       <!-- отсылка на base.html-->
+{% block content %}             <!-- типа декоратор-->
+
+<h1> Зарегестрация</h1>
+<form action="" method="POST" novalidate>       <!-- в action указывается url куда отправлять форму-->
+
+    {{ form.hidden_tag() }}   <!--   можно отключить-->
+   <p>
+        {{ form.username.label }} <br>
+        {{ form.username(size=32) }}
+    </p>
+    <p>
+        {{ form.password.label }} <br>
+        {{ form.password(size=32) }}
+    </p>
+    <p>
+        {{ form.email.label }} <br>
+        {{ form.email(size=32) }}
+    </p>
+    <p> {{ form.remember_me() }} {{ form.remember_me.label }} </p>
+    <p> {{ form.submit() }} </p>
+
+</form>
+
+{% extends "base.html" %}
+{% import 'bootstrap/wtf.html' as wtf %}
+
+{% block app_content %}
+    <h1>Register</h1>
+    <div class="row">
+        <div class="col-md-4">
+            {{ wtf.quick_form(form) }}
+        </div>
+    </div>
+{% endblock %}
+
+
+{% endblock %}
